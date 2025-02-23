@@ -1,0 +1,144 @@
+\section{Literature Review}
+\label{sec:lit}
+
+This section will outline the relevant research areas that I draw on for this paper and how I contribute to them. First, this includes 
+research on how production linkages are established; second, the modeling of the impact of these linkages on fluctuations; third, how 
+such models change when applied to prices; and lastly, the specific role of global connections for price dynamics.\\
+
+Input-Output production structures are an object of longstanding interest in economics. The fragmentation of production into individual 
+stages distributed domestically and globally gives rise to complicated Input-Output networks. In the literature these are called Global 
+Value Chains (GVCs). This representation of production with intermediate inputs along a value chain has allowed researchers to think of 
+production processes as upstream or downstream relative to a particular production stage. \textcite{antras2012MeasuringUpstreamnessProduction} 
+use this idea of relative positioning in a production network to formalize the notion and measurement of upstreamness and downstreamness of a 
+(country-)sector, drawing on the conceptual framework of Leontief Input-Output models. \footnote{see 
+\textcite{miller2009InputoutputAnalysisFoundations} for an extensive overview.}  These concepts have subsequently become a standard part of 
+research on production structures, understood as an indicator for ``specialization'' in a particular stage of the value chain 
+\parencite{wang2017MeasuresParticipationGlobal,alfaro2019InternalizingGlobalValue}. A conceptual refinement of the notion of upstreamness 
+was proposed by \textcite{miller2017OutputUpstreamnessInput}, which I will discuss in more detail in section \ref{sec:methods}. 
+\textcite{miller2017OutputUpstreamnessInput} also emphasizes the role of upstreamness as an indicator of the ability of a sector to propagate 
+a stimulus through the economy, making reference to the discussion around estimating multipliers in the literature on Leontief Input-Output 
+models in \textcite[243-250]{miller2009InputoutputAnalysisFoundations}. In parallel to this work on value chain positions, theoretical models 
+of international trade have progressed towards explicitly modeling production chains that span multiple countries. An important contribution 
+to this literature is \textcite{caliendo2015EstimatesTradeWelfare}, who provide a model of vertical production linkages that can involve 
+several countries and sectors. The model is very parsimonious in its required input data and has been widely used as a baseline to evaluate 
+different scenarios of trade costs in an environment with GVCs. A particular feature of \textcite{caliendo2015EstimatesTradeWelfare} is 
+that value chains are modeled as ``round-about'' implying that the chain's actual length is infinite as country-sectors rely on each 
+other's input in a loop structure. Further contributions have made efforts to formalize the formation of global value chains further, 
+either as a multi-stage, decentralized production process \parencite{antras2020GeographyGlobalValue} or as a decision about vertical 
+integration \parencite{fally2018CoasianModelInternational}. Another feature of \textcite{caliendo2015EstimatesTradeWelfare} is to model input 
+sourcing decisions simply as a choice among the cheapest price offered across a specific sector, implying each input can only be sourced from
+one country-sector. \textcite{antras2017MarginsGlobalSourcing} provide a model that makes decisions of foreign sourcing interdependent across
+the markets for different inputs to account for the unique mechanisms of supplier selection, which are sensitive to substitutability or 
+complementarity of inputs, among other things. My contribution to this branch of the literature extends the understanding of upstreamness and 
+downstreamness, specifically for applications at the intersection of international trade and macroeconomics. \\
+%A particular branch of research strongly
+%influenced by International Trade is concerned with the estimation of production links in their extensive and intensive margin.
+%For most of this research, the interdependence of trade relations has been absorbed into ``multilateral resistance'' terms in order 
+%to make gravity models tractable (see \textcite{head2014ChapterGravityEquations} for a summary). More recently, 
+%\textcite{chaney2014NetworkStructureInternational, chaney2018GravityEquationInternational} are the first major contribution to explicitly 
+%endogenize this link formation with reference to networks.
+%- Bernard \& Moxnes in similar vein
+%\textcite{oberfield2018TheoryInputOutput}
+
+Conversely, (international) macroeconomics explores production structures as a determinant of aggregate fluctuations, usually with 
+output as the main variable of interest. However, many themes developed for models of output fluctuations have been fruitfully applied 
+to price dynamics, as covered in the next paragraph. The foundational contribution of this literature is \textcite{long1983RealBusinessCycles} 
+who provided a simple model of business cycle fluctuations with disaggregated sectoral production. One current approach to explain the 
+occurrence of aggregate and sectoral volatility is through network transmission of shocks following \textcite{acemoglu2012NetworkOriginsAggregate} 
+\parencite{acemoglu2016NetworksMacroeconomyEmpirical,baqaee2018CascadingFailuresProduction,chakrabarti2018DispersionMacroeconomicVolatility}.
+This branch of research has remained mostly cross-sectional and focused on ``closed'' economies but is able to model the rich non-linearities 
+between shocks and output that result from the network structure. Contrary, following \textcite{basu1995IntermediateGoodsBusiness}, models of 
+``International Real Business Cycles'' rely on the correlation of shocks along country or sectoral dimensions as the main explanations of 
+country comovement (and hence volatilities) \parencite{burstein2008TradeProductionSharing,atalayHowImportantAre2017}. While this approach 
+has a strong intertemporal and international focus, it lacks a more complicated production structure beyond multiple sectors per country. 
+In parallel to this theoretical discussion, empirical research by \textcite{digiovanni2009TradeOpennessVolatility, 
+digiovanni2010PuttingPartsTogether} has found that trade openness and the strength of vertical production linkages are positively 
+affecting aggregate volatility and comovement, respectively. Further work such as \textcite{barrotInputSpecificityPropagation2016}, 
+\textcite{digiovanni2018MicroOriginsInternational} has shown that even firm-specific shocks may have a significant impact on aggregate 
+fluctuations under certain conditions on input specificity, vertical linkages, and the firm size distribution.\footnote{Much of this 
+empirical work is connected to a third branch of theoretical explanations following \textcite{gabaix2011GranularOriginsAggregate} that 
+is centered on granular economies. This approach is not discussed at length here since granularity does not play a significant role in 
+this project.} Finally, \textcite{joya2019AllSectoralShocks} find that sectors with high centrality in the network of production linkages 
+are more likely to propagate shocks that lead to significant aggregate volatility. These contributions demonstrate that network 
+transmission and correlated shocks are relevant channels for explaining aggregate fluctuations. Consequently, recent research by 
+\textcite{huo2019InternationalComovementGlobal} has tried combining them as complementary channels to explain aggregate fluctuations 
+structurally. Based on this framework, \textcite{bonadio2023GlobalizationStructuralChange} built a model of structural change and 
+globalization, where they show that reallocation of economic activity from manufacturing to services in many advanced economies has 
+produced a pattern in aggregate comovement where the inter-country correlations of GDP have remained mostly stable despite higher 
+trade integration. This result is consistent with the fact that shocks to services should be much less correlated across countries than for 
+manufacturing. I contribute to this part of the literature as a first step in quantifying the measurement of production chain positions in 
+macroeconomic models, a gap specifically brought up by \textcite[27]{smets2019PipelinePressuresSectoral}. From the above literature, 
+I am unaware of any use of upstreamness or downstreamness in the macroeconomic models with a short-term interest, such as stabilization 
+policy or macroeconomic volatility.\\
+
+In both research areas covered so far, production linkages are discussed in tandem with output. A dedicated literature applies 
+modeling concepts on production networks to price dynamics and inflation. This paragraph will discuss the standard facts and models
+about price setting and how these are applied to models with IO linkages. In terms of inflation measures, the definition of the 
+Consumer Price Index (CPI) is the aggregation of goods prices for consumers, and the Producer Price Index (PPI) is the aggregation 
+of goods prices for producers; hence, the distribution of change rates for these inflation measures should be very similar in closed 
+economies as shown by \textcite{nakamura2008FiveFactsPrices} and most results discussed in this paragraph hold for CPI and PPI. 
+According to \textcite{nakamura2008FiveFactsPrices}, the price change frequency is higher for price increases than decreases and 
+covaries positively with inflation. These basic facts can be reproduced with simple menu cost models with Input-Output linkages 
+\parencite{nakamura2010MonetaryNonneutralityMultisector}. Here, the presence of intermediate input structures implies a significant 
+increase in the impact of aggregate monetary shocks on price setting (monetary non-neutrality). Empirical work has further explored 
+the impact of shocks at various levels \parencite{boivin2009StickyPricesMonetary,beck2016ImportanceSectoralRegional} and found 
+significant heterogeneity in both the timing and magnitude of the price change response. Concretely, sectoral shocks have an 
+immediate but transient effect on price-setting, while responses to aggregate shocks are delayed but more substantial, making 
+sectoral responses comparatively more volatile. Subsequently, price-setting models have been able to explain this behavior as a 
+combined impact of sectoral labor market segmentation and shock transmission through Input-Output linkages 
+\parencite[in circulation since 2011]{carvalho2021SectoralPriceFacts}.\footnote{Other approaches for explanations of this pattern 
+are in terms of rational inattention to certain shocks based on \textcite{mackowiakOptimalStickyPrices2009}, or through 
+price-setting by multi-product firms, summarised by \textcite{bhattarai2014MultiproductFirmsPricesetting}. These contributions 
+will not be discussed here in further detail.} Based on such advances, research on sectoral inflation dynamics and Input-Output 
+structures has started to combine New-Keynesian DSGE models with IO linkages. Overall results by 
+\textcite{smets2019PipelinePressuresSectoral,afrouzi2023InflationGDPDynamics,minton2023DelayedInflationSupply} suggest that 
+sectoral supply shocks propagate downstream and make price rigidities/ persistence accumulate in this process. These papers confirm 
+previous findings by \textcite{nakamura2010MonetaryNonneutralityMultisector} that IO linkages increase monetary non-neutrality and 
+contribute to price volatility. However, these models remain focused on domestic frameworks (mostly the US) in terms of their 
+theoretical mechanism and calibration data. Furthermore, \textcite{smets2019PipelinePressuresSectoral} admits that the 
+characterization of upstream or downstream sectors (and propagation direction) in this area of research is primarily ad-hoc in the 
+sense of some sector's production being more ``raw'' \parencite[27]{smets2019PipelinePressuresSectoral} than others. In my paper, 
+I contribute a simple framework for explaining price volatility through production linkages, similar to these previous contributions.
+For this purpose, I reproduce stylized facts between formal measures of production chain position and price volatility and explain them 
+through a simple cost optimization framework.\\
+
+%Furthermore, 
+%the current discussion about energy price shocks in the context of the Ukraine-Russia war has made the distinction between the CPI 
+%and Core inflation (CPI without food and energy) similarly meaningful. Here, \textcite{minton2023DelayedInflationSupply} show that Core Personal Consumption 
+%Expenditure (Core PCE) is predictable to a significant degree through a production network model with an oil component. Moreover, energy 
+%price shocks also play a significant role in determining pass-through among firms, as shown by \textcite{mejean2023CostPassthroughRise}. 
+
+The previous paragraph has discussed how production linkages affect price dynamics for models in domestic settings. International 
+production linkages, as well as the difference between CPI and PPI dynamics, have been mostly ignored in that literature, based on evidence 
+from \textcite{nakamura2008FiveFactsPrices}. Indeed, \textcite{weiWedgeCenturyUnderstanding2018} show strong comovement of CPI and PPI 
+for most countries over the recording time (positive Pearson correlation coefficient). However, they also show that this comovement 
+has weakened with increasing trade integration, and some countries even show a negative correlation in recent years. Previous research
+has investigated the global comovement of inflation \parencite{ciccarelli2010GlobalInflation,monacelli2009InternationalDimensionInflation}, 
+and found significant global components of inflation. \textcite{auer2019InternationalInflationSpillovers} take a similar approach 
+but with the addition of international Input-Output structures for the propagation of cost shocks into the comovement of PPI inflation 
+(for a similar contribution on consumer prices see \textcite{auerGlobalisationInflationGrowing2017}). Their results suggest that production 
+linkages amplify international comovement significantly, making up about half of the global component of PPI inflation. As such, 
+international comovement of inflation is largely not due to common shocks or global trends but the amplification of country, sector, or 
+country-sector shocks. Conversely to the previous paragraph, the literature is heavily focussed on the international dimension 
+of production linkages and price dynamics. However, there is a lack of papers explicitly explaining this relationship. My contribution 
+is a first step in transferring results derived for a domestic setting into a framework that includes international linkages. Since the 
+organization of international production systems is highly multidimensional, introducing formal measures of production chain position 
+to such models is even more relevant than for domestic frameworks.\\
+%The global integration 
+%of production and its relation to inflation dynamics has also been a topic of interest after the Covid crisis. Evidence points to a 
+%mismatch of supply and demand (termed bottlenecks) in multiple sectors as a driver of the inflation surge during 2021 
+%\parencite{labelle2022GlobalSupplyChain,digiovanniGlobalSupplyChain2022}.
+%%% Be more explicit
+% Out of all the papers presented here, the closest to my contribution are \textcite{afrouzi2023InflationGDPDynamics} and 
+% \textcite{auer2019InternationalInflationSpillovers}. However, while the former provides a structural explanation of the impact of 
+% production linkages on inflation dynamics, the framework is purely domestic and does not refer to international influences. However, 
+% imported inputs are a major feature of modern production systems, and they introduce the possibility for correlated shocks and 
+% international Input-Output network propagation. Such evidence is shown by \textcite{auer2019InternationalInflationSpillovers}, where
+% production linkages have the potential of strong international propagation of shocks, regardless of their origin in a country, 
+% sector, or country-sector. Even so, this evidence derived from a time-series model lacks an explicit theoretical foundation for the 
+% impact of production linkages on price dynamics. My contribution aims to fill the gap left between these two papers and provides a 
+% theoretical framework that is suited to evaluate the interaction between production linkages and price dynamics at a global scale. 
+% Finally, by including a formal definition of upstreamness and downstreamness into the model framework for price dynamics, I provide an 
+% opportunity to avoid ad-hoc classifications of upstream and downstream sectors \parencite{smets2019PipelinePressuresSectoral}. Such an 
+% addition to the modeling framework has the potential to reveal additional empirical insights about the impact of production linkages on 
+% sectoral price dynamics and improve our understanding of the theory behind this relation.

@@ -1,0 +1,96 @@
+\section{Data and Stylized Facts}
+\label{sec:datafacts}
+
+\subsection{Data Overview}
+
+I use data on sectoral price changes in 31 countries and for an intersection of 17 manufacturing sectors at the ISIC 3.1 classification
+for 1995-2011. This dataset was compiled, prepared, and harmonized (e.g. monthly interpolation, currency transformation) 
+by \textcite{auer2019InternationalInflationSpillovers} and is freely available for download as a replication package 
+\parencite{levchenko2020ReplicationDataInternational}. These price changes are sector-level producer prices (PPI), representing 
+prices of ``unfinished'' goods for further use in production (intermediates). This is an important caveat since prices on consumer goods 
+(final demand) will be for retail-level quantities, while producer goods are dealt wholesale. Consumer prices also benefit strongly from 
+special sales periods, making them potentially more volatile. The data on international Input-Output tables were obtained from the WIOD 2013 
+release \parencite{timmer2015IllustratedUserGuide}. Due to the non-availability of price data at appropriate frequency and disaggregation, 
+the service sectors will not be included in the analysis.
+%that also includes a Socioeconomic Appendix that allows me to compute labor shares explicitly, instead of relying on Value Added shares.
+
+In terms of an overview of the price data, figures (\ref{fig:ppi_chng_density}a) and (\ref{fig:ppi_chng_density}b) show the distribution 
+of producer price changes in the cross-section and for each country-sector. It is apparent that the cross-sectional distributions are 
+more similar and closer to a normal distribution. Comparetively, the price change distributions for each country-sector are still subject 
+to significant heterogeneity. Nonetheless, both plots show very heavy tails and a slightly positive mean. Based on these price changes and 
+as defined in section \ref{sec:methods}, I compute the sectoral producer price volatilities for each year as my primary outcome variable. 
+The violin plots of the country-sector price volatilities within years, sectors, and countries in appendix \ref{sec:add_viz} show 
+significant heterogeneity in the distribution of volatilities within each sector and year. Comparatively, there are only small differences 
+between the distributions of volatilities in each year.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/ppi_chng_density_trunc.png}
+    \caption{\label{fig:ppi_chng_density} Density plots over Year-Month and Country-Sector}
+\end{figure}
+
+The graphs in figure (\ref{fig:shares_stream}) provide some empirical substance to the intuition of upstreamness and downstreamness being 
+measures for indirect shock exposure to final demand or primary input cost, respectively. Here, I show the Pearson correlation coefficient
+computed separately for each year of the country-sector values of final demand shares, value added (primary input) share, upstreamness, 
+and downstreamness. These graphs generally reproduce the empirical facts shown by \textcite{antras2018MeasurementUpstreamnessDownstreamness},
+in the sense of a negative correlation coefficient for both ``upstreamness - final demand share'' and ``downstreamness - value added share''
+that weakens over time. Furthermore, the graph shows the same time trend for the correlations upstreamness - downstreamness and final demand
+share - value added share. Contrary to the \textcite{antras2018MeasurementUpstreamnessDownstreamness}, these correlations are initially 
+negative and become positive only with time. The reason for this should be found in excluding service sectors from my analysis. However,
+it is an interesting fact that despite the removal of service sectors, the relations described by 
+\textcite{antras2018MeasurementUpstreamnessDownstreamness} remain valid.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/shares_stream.png}
+    \caption{\label{fig:shares_stream} Plots for year-wise correlations for exposure measures}
+\end{figure}
+
+
+%MAYBE INTEGRATION/ OPENNESS OVER TIME - Leave out for now maybe add later
+
+\subsection{Stylized Facts}
+
+Regarding the empirical strength of the relation between sectoral producer price volatility and upstreamness or downstreamness at the 
+country-sector level, figure (\ref{fig:macro_corr}) presents an initial overview. This plot shows that the correlation between 
+upstreamness and price volatility is positive in the whole period of observation, while the correlation between producer price volatility and 
+downstreamness is negative. Both measures are not particularly strong; the correlation between upstreamness and price volatility is around 0.25;
+the correlation between downstreamness and price volatility is around -0.1. However, their sign is mostly consistent, and there seems to be a 
+trend that aligns with the increasing integration of the global production system. 
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/macro_correlations.png}
+    \caption{\label{fig:macro_corr} Correlation of price volatility with upstreamness and downstreamness}
+\end{figure}
+
+From this plot alone, it is difficult to judge the validity of the underlying relations since numerous factors common to certain 
+countries, sectors, country-sectors, or years might drive the observed positive and negative correlation, respectively. This suspicion 
+is consolidated by the violin plots in appendix \ref{sec:add_viz}, showing distributions of producer price volatility within sectors 
+and countries. Hence, I conduct regressions with a broad set of fixed effects to test if the described relations between price volatility, 
+upstreamness, and downstreamness remain statistically significant. Equation (\ref{eq:regress}) describes the general structure of the 
+estimated models, where $\varphi$ is the price volatility, $u$ is upstreamness, $d$ is downstreamness, all indexed by their country-sector 
+and year of observation. $\Xi_{i,t}$ denotes the respective fixed effects at country, sector, country-sector, and year levels. Finally, 
+$\nu_{i,t}$ is the error term.
+
+\begin{equation} \label{eq:regress}
+    \varphi_{i,t} = \beta_u u_{i,t} + \beta_d d_{i,t} + \Xi_{i,t} + \nu_{i,t}
+\end{equation}
+
+The results from this equation are displayed in table (\ref{tab:reg_baseline}). Both the coefficients for upstreamness and downstreamness 
+are statistically significant across all fixed effect specifications and remain consistent regarding their sign. An interesting observation 
+is that this is the case even after the inclusion of country-sector fixed effects.  The robustness of the regression coefficients to 
+country-sector fixed effects suggests that the mechanism behind the relation observed in the regression might be a product not only of 
+static sector, country, or country-sector characteristics but also a product of dynamic adaptation in the production network. In order to 
+further solidify the evidence from these regressions, I have included several more tables of regressions with only upstreamness and 
+downstreamness on the RHS and another one with the sum of upstreamness and downstreamness that can be understood as a measure of the length 
+of global value chains a country-sector is involved in. Furthermore, I have run the specification shown in equation (\ref{eq:regress}) in a 
+year-wise fashion under the addition of just country and sector fixed effects. All of these additional tables can be seen in appendix 
+\ref{sec:add_reg}. Generally, the results of these additional regressions remain consistent regarding the sign of the coefficients. However, 
+in case of the individual RHS variables, the significance of coefficients does not hold up to the inclusion of fixed effect as well as in 
+table (\ref{tab:reg_baseline}). A similar trend is observed for the year-wise regressions, where in the years before 2004, the coefficients tend to lose 
+significance under country and sector fixed effects. Given these robustness checks, the results observed in table (\ref{tab:reg_baseline}) could be 
+driven by particularly strong values during the years after 2004, partially invalidating the stylized facts presented here. Other possible 
+explanations would be a lack of power in the year-wise regression or, again, the relative importance of the dynamic adaptation of production structures. 
+
+\include{tables/reg_ppi_volat_std_base.tex}
+
+%SHOW YEARWISE TABLE (to be produced) - Not for now 
+

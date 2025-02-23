@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage[english]{babel}
+\usepackage[a4paper, width=150mm, top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{}
+\fancyfoot[LE,RO]{\hfill\thepage\hfill}
+\usepackage[onehalfspacing]{setspace}
+
+
+\usepackage{csquotes}
+\usepackage[style=authoryear-icomp, maxcitenames=2, backend=biber]{biblatex}
+\usepackage[colorlinks=true, citecolor=., linkcolor=., urlcolor=blue]{hyperref}
+\addbibresource{masterthesis.bib}
+
+% Some generic settings.
+\newcommand{\cmd}[1]{\texttt{\textbackslash #1}}
+\setlength{\parindent}{0pt}
+\newenvironment{bibsample}
+  {\trivlist\samepage
+   \setlength{\itemsep}{0pt}}
+  {\endtrivlist}
+
+%%To make a Subtitle
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+\posttitle{%
+    \par\end{center}
+\begin{center}\large#1\end{center}
+\vskip0.5em}%
+}
+
+\newcommand{\cm}[3][\mathord]{%
+  #1{\text{\textcolor{#2}{$#3$}}}%
+}%% originally it was \text{\mathversion{black}...
+
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+\usepackage{appendix}
+
+\DeclareUnicodeCharacter{1E62}{S}
+
+%Tables
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{siunitx}
+%%Equations
+\usepackage{amsmath}
+\usepackage{amssymb}
+%%Figures
+\usepackage{float}
+
+% Colors
+\usepackage{xcolor}
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\title{Producer Price Volatility Up and Down the Value Chain\\[1ex]
+  \large A Bullwhip-Effect for Prices?} 
+\begin{center}
+\large PSE Master Thesis
+\vfill
+   \includegraphics[width=7.5cm]{pictures/PSE logo.png}
+\vfill   
+\end{center}
+\author{Nicolas Göller \thanks{Paris School of Economics \href{mailto:nicolas.goeller@etu.univ-paris1.fr}
+{nicolas.goeller@etu.univ-paris1.fr}. I want to thank my supervisor Ariell Reshef for patient and insightful
+ research guidance. The paper has also benefitted from discussions with Angelo Secchi, Mathieu Parenti, Frederic Denker, Mudigonda Sarath Chandra, Alice Mazzacurati, and Nicholas Tokay as well as with the participants of the APE Macroeconomics Research Seminar.
+ I also thank the ``Studienstiftung des Deutschen Volkes'' for its financial support.}}
+\date{\today}
+\maketitle
+\begin{abstract}
+\noindent This study investigates the relationship between a country-sector's position in the production chain and its price volatility using a theoretical model and numerical simulations. The model's results, validated against empirical data, show that sectors positioned farther from final demand (upstream) experience higher price volatility, while those farther from primary inputs (downstream) exhibit lower volatility. This pattern for a cross-section of country-sectors holds even as shocks are simulated to propagate further up and down the production chain. Correlated shocks at country or sector levels do not disrupt this pattern but lead to sectoral comovement. These findings contribute to our understanding of the relation between international production linkages and price dynamics.
+\\
+\vspace{0in}\\
+\noindent\textbf{Keywords:} sectoral price volatility, input-output linkages, upstreamness\\
+\vspace{0in}\\
+\noindent\textbf{JEL Codes:} E31, E32, F15, F66\\
+\vspace{1.7in}\\
+\\
+
+\bigskip
+\end{abstract}
+\thispagestyle{empty}
+\end{titlepage}
+
+%%% Make tables of content, figures and tables
+\tableofcontents
+\setcounter{page}{0}
+\thispagestyle{empty}
+\newpage
+\listoffigures
+\setcounter{page}{0}
+\thispagestyle{empty}
+\listoftables
+\newpage
+
+\input{chapters/01_Introduction}
+\input{chapters/02_Literature_Review} %Prod networks, volatility, price dynamics, supply chains
+\input{chapters/03_Methods} %Volatility, Down/Upstreamness & Models with IO and GE dimensions
+\input{chapters/04_Data_and_Stylized_Facts} %Regressions with FE for basic facts, maybe year-wise
+\input{chapters/05_Multisector_Model} %Basic model framework, 1x2 frame, 31x17 frame
+\input{chapters/06_Simulation_Results} %different sets of 1x2 (maybe 2x2) and the 31x17 for external validity
+\input{chapters/07_Limitations_and_Extensions} %stickiness, non-roundabout, network formation, aggregation
+%\input{chapters/08_Policy_Implications} %
+\input{chapters/09_Conclusion}
+\newpage
+\appendix    
+\input{chapters/10_Appendix.tex}
+
+\newpage
+
+\newrefcontext[sorting=nyt]
+    \printbibliography
+
+\end{document}

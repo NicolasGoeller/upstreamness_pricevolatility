@@ -1,0 +1,179 @@
+\section{Simulation Results}
+\label{sec:simres}
+
+In this section, I present and discuss the simulation results for the 1-country, 2-sector, and 2-country, 2-sector models, 
+respectively, with downstream transmission of cost shocks and upstream transmission of demand shocks. Each shock scenario will be 
+presented through two graph panels of 16 plots each. Each panel of plots has the results from different shock variance parameters on 
+the columns and results from different variance values for the initial price changes on the rows. The first graph for each pair 
+presents results on the first transmission stage but across several Returns-To-Scale (RTS) indicator values. The second graph for each 
+pair shows the propagation of shocks to price volatility across up to five stages but only for one combination of RTS.
+
+\subsection{2-Sector Economy}
+
+Graph (\ref{fig:1x2cost_y1}a) provides the first insights into the one-stage downstream transmission of primary input cost shocks on 
+price volatility in equation (\ref{eq:downstream_changes}) for the IO matrix shown in figure (\ref{fig:IO1x2_lowopen}). In this scenario, a more 
+downstream sector (sector indicators with downstreamness in legend) will be less volatile (volatilities on y-axis) if the cost shock 
+distribution dominates the distribution of initial price changes in variance (upper triangular of plot panel). Generally, the simulated 
+volatilities for all sectors and shock scenarios are smaller as the TTS indicator increases (RTS indicators on x-axis). Considering the 
+role of the RTS indicator matrix $\Gamma$ in equation (\ref{eq:downstream_changes}), such an effect is mathematically reasonable. 
+The theoretical interpretation of this observation can be seen as partial equilibrium adaption with economies of scale in this basic 
+model framework. The model intuition suggests that a positive (negative) primary input cost shock or initial price change leads to an 
+increase (decrease) in the marginal cost and, hence, buyer price. Since this simulation is conducted under an assumption of perfect 
+competition, the price change must be due to a change in the supply produced supply. In this sense, the theoretical role of RTS can 
+be understood in terms of the production structure enacting an amplifying (case of decreasing RTS, $\gamma_i < 1$) or diminishing 
+(case of increasing RTS, $\gamma_i > 1$) effect on this change. If, as for these simulations, all sectors have the same RTS values, 
+it is reasonable to expect decreasing volatilities as RTS values increase. 
+
+Graph (\ref{fig:1x2cost_y1}b) displays the multi-stage downstream propagation in equation (\ref{eq:propagation}) of primary input cost shocks, 
+specifically for the case of constant RTS (differences for other RTS are small).\footnote{The volatility values in graph (\ref{fig:1x2cost_y1}a) 
+for the RTS indicator equal to one, hence are the same in each panel as the values for stage one volatilities in graph (\ref{fig:1x2cost_y1}b).} 
+This graph shows that the pattern of the more downstream sectors being less volatile (volatilities on y-axis) in the cross-section of sectors 
+(sector indicators with downstreamness in legend) persists even as the simulation propagates the economy downstream in total (stages 
+on the x-axis). Again, as for the one-stage transmission in the previous paragraph, this observation holds only for shock scenarios
+where the variance of the cost shock distribution is larger than the variance of the initial price change 
+distribution (upper triangular of plot panel). Volatility will also accumulate with downstream propagation stages in the shock scenarios of this 
+upper triangular, while it diffuses for the cases in the lower triangular. Furthermore, it is apparent that for the given level 
+of RTS, in the lower triangular of graph (\ref{fig:1x2cost_y1}b), the more downstream sector will become less volatile faster and 
+even switch the ranking as with propagation into more downstream stages. Plots of the same kind as (\ref{fig:1x2cost_y1}b) but 
+for different levels of RTS show that the propagation dynamic will be more pronounced the higher RTS are. The appendix \ref{sec:1x2_sim}
+contains the same graphs shown here but for the simulation conducted on the IO matrix in figure (\ref{fig:IO1x2_highopen}). As previously
+mentioned, the supposed main difference between the two was the reversal of the ranking of value added shares, implying that this
+new IO matrix deviates from the positive correlation between upstreamness and downstreamness shown in the data. Remarkably, both graphs 
+do not show any major qualitative differences in the pattern targeted for this project (mind the color change for the more downstream 
+sector). 
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/1x2_scenarioplot_cost_shocks_1.0-1.0_year1.png}
+    \caption{\label{fig:1x2cost_y1} Cost shock propagation}
+\end{figure}
+
+Moving on to final demand shocks, graph (\ref{fig:1x2demand_y1}a) provides the first insights to examine the one-stage upstream transmission
+of final demand shocks in equation (\ref{eq:upstream_changes}), again for data simulated on the IO matrix in figure (\ref{fig:IO1x2_lowopen}).
+This graph shows that at the first stage of upstream demand shock transmission, more upstream sectors (sector indicators with upstreamness in 
+legend) are more volatile (volatilities on y-axis) across all values of RTS (RTS indicators on x-axis), and all combinations of variances for 
+final demand shocks and initial price changes. Since there is little difference between the plots in each row but a significant difference 
+between those in each column, the variance of demand shocks is of low relative importance compared to the variance of initial price changes.
+A higher variance of initial price changes intuitively results in a higher price volatility. For no variance in initial price changes, 
+an expected pattern is visible for Constant RTS, where the demand shock has no impact, no matter its variance. Generally and consistent
+with the pattern observed for cost shocks before, volatility decreases with RTS across all sectors and in all stage one shock 
+scenarios. 
+
+Graph (\ref{fig:1x2demand_y1}b) displays the multi-stage upstream propagation in equation (\ref{eq:propagation}) of final demand shocks, 
+specifically for the case of decreasing RTS (differences for other RTS are small).\footnote{The volatility values in graph (\ref{fig:1x2demand_y1}a) 
+for the RTS indicator equal to 0.8, hence are the same in each panel as the values for stage one volatilities in graph (\ref{fig:1x2demand_y1}b).}
+As already observed for the first stage transmission in graph (\ref{fig:1x2demand_y1}a), more upstream sectors in the cross-section (sector indicators 
+with upstreamness in legend) continue to be more volatile (volatilities on y-axis) in all stages (stages on the x-axis) of shock propagation and with 
+no qualifications. Furthermore, volatility will only accumulate (or persist) with upstream propagation (see rows 1-2 in graph 
+(\ref{fig:1x2demand_y1}b)) if the variance of the initial price change distribution is sufficiently low. This pattern is even more pronounced 
+for higher levels of RTS. The appendix \ref{sec:1x2_sim} contains the same graphs as shown here, but for the simulation conducted on the IO matrix in figure 
+(\ref{fig:IO1x2_highopen}). Again, the differences between these results are mostly quantitative and do not affect the patterns reported.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/1x2_scenarioplot_demand_shocks_0.8-0.8_year1.png}
+    \caption{\label{fig:1x2demand_y1} Demand shock propagation}
+\end{figure}
+
+% Concrete discussion of mechanism
+Overall, the patterns observed from the simulated data appear consistent with what has been shown from the empirical data. Sectors with 
+higher upstreamness are more volatile in their prices, and sectors with higher downstreamness are less volatile. No major difference 
+exists between the simulated results for the IO matrix with ``high openness'' and the one with ``low openness''. This implies that 
+the mechanism behind the results for the 1-country, 2-sector setup is all about the sectoral shares of final demand and primary inputs. 
+The sector with the higher share of final demand will have lower upstreamness and, hence, lower price volatility. Conversely, the sector
+with a higher share of primary inputs will have lower downstreamness and, hence, higher price volatility. This emphasizes the importance of
+understanding how the direct shock exposure reflected in these shares gives rise to both the production chain positions and the
+price volatility. As an indicator of direct shock exposures, the shares determine the exposures to indirect shocks and, hence, the 
+aggregate relations observable in the data. This model grossly oversimplifies the situation and most likely overemphasizes 
+the direct shares' role and the impact of purely country-sector shocks in determining price volatility. Since such a simplification 
+is necessary to explain the underlying mechanisms but the dangers of losing external validity, the next section is a step toward 
+qualifying this simplification. 
+
+
+\subsection{2-Country, 2-Sector Economy}
+
+The first stage downstream transmission of cost shocks seen in graph (\ref{fig:2x2cost_i_y1}a) provides insights on how shocks to primary input 
+costs drive differences in price volatility with two countries and two sectors. The simulations shown here are conducted for the IO 
+matrix in figure (\ref{fig:IO2x2_lowopen}). As before, the x-axis shows RTS values, the y-axis volatilities, and the legend country-sector
+indicators with downstreamness values. The basic result is consistent with the one from the 1-country,2-sector 
+setup in the previous section, and shows that more downstream sectors are less volatile in prices. The differences in simulated price 
+volatility are more pronounced for higher variances of cost shock. This overall pattern is reversed only if cost shock variance is very 
+low compared to the variance of initial price changes, which is in contrast to the 1x2 IO matrix simulation, where reversal was observed 
+for equal variance values. This is most likely a result of the higher share of value added in this 2x2 IO matrix compared to the 1x2 
+IO matrix. Otherwise, it appears to be the case still that higher RTS values cause lower simulated volatilities and that 
+higher variances of initial price change cause higher simulated volatilities at this first stage of shock transmission. 
+
+Graph (\ref{fig:2x2cost_i_y1}b) displays the multi-stage downstream propagation in equation (\ref{eq:propagation}) of primary input cost shocks, 
+specifically for the case of constant RTS (differences for other RTS are small).\footnote{The volatility values in graph (\ref{fig:2x2cost_i_y1}a) 
+for the RTS indicator equal to 1.0, hence are the same in each panel as the values for stage one volatilities in graph (\ref{fig:2x2cost_i_y1}b).}
+The overall pattern 
+between volatility and downstreamness in the country-sector cross-section persists as the shock propagates downstream along the value 
+chain. Moreover, volatility accumulates with propagation down the chain for higher variance values (graph (\ref{fig:2x2cost_i_y1}b), 
+columns 3 and 4) but is diffused otherwise (columns 1 and 2). These results are also found again for simulations of the second IO matrix 
+with country-sector shocks, visualized in the appendix \ref{sec:2x2_sim}. Appendix \ref{sec:2x2_sim} also contains the graph for country-sector
+shocks to primary input cost for the simulations on IO matrix (\ref{fig:IO2x2_highopen}), the graphs for other shocks were omitted since they 
+would not have added much to this paper. Furthermore, I find that cost shocks 
+originating purely at the country or sector level do not change these simulated patterns significantly. However, they do induce a 
+convergence of volatilities for the multi-stage shock propagation, and they weaken the dominance of cost shocks over initial price 
+changes in terms of impact on volatility (as observed in graph (\ref{fig:2x2cost_i_y1}a)). Finally, the simulations under shock scenarios 
+that mix country with country-sector shocks and sector with country-sector shocks show some more complicated patterns.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/2x2_scenarioplot_i_cost_shocks_RS0.8_year1.png}
+    \caption{\label{fig:2x2cost_i_y1} Country-sector cost shock propagation}
+\end{figure}
+
+Moving on to final demand shocks, graph (\ref{fig:2x2demand_i_y1}a) provides insights into how shocks to final demand drive differences in 
+price volatility in the first stage of upstream transmission. The simulations shown here are conducted for the IO 
+matrix in figure (\ref{fig:IO2x2_lowopen}). As before, the x-axis shows RTS values, the y-axis volatilities, and the legend country-sector
+indicators with upstreamness values. More upstream sectors are also more volatile across all values 
+for RTS and variance of shocks and initial price change. In general, volatility decreases as RTS increase, but 
+it also appears to be the case that the initial price changes are more impactful for volatilities than the cost shock. This is 
+evident from the increase in the level of volatility with the rows in graph (\ref{fig:2x2demand_i_y1}a), as well as the minor differences 
+only between the graph's columns. Finally, the patterns for Constant RTS that are visible for zero variance of initial 
+price changes do not reappear for the other plot rows. All of this is very consistent with the observed patterns from results for the 
+1-country, 2-sector setup.
+
+Graph (\ref{fig:2x2demand_i_y1}b) displays the multi-stage upstream propagation in equation (\ref{eq:propagation}) of final demand shocks, 
+specifically for the case of decreasing RTS (differences for other RTS are small).\footnote{The volatility values in graph (\ref{fig:2x2demand_i_y1}a) 
+for the RTS indicator equal to 0.8, hence are the same in each panel as the values for stage one volatilities in graph (\ref{fig:2x2demand_i_y1}b).}
+The general relation of upstreamness and price volatility in the 
+country-sector cross-section discussed just now also persists for the propagation up the value chain as shown in graph (\ref{fig:2x2demand_i_y1}b). 
+Again, the dominance of the initial price changes is apparent here since volatility diffuses as the shocks propagate up the chain. This 
+diffusion of volatility occurs for plot rows with non-zero price change variances (graph (\ref{fig:2x2demand_i_y1}b), rows 2-4), and 
+accumulation only happens if initial price changes have zero variance (row 1). These results are also found again with one exception 
+for simulations of the second IO matrix (\ref{fig:IO2x2_highopen}) with country-sector shocks, visualized in the appendix \ref{sec:2x2_sim}. 
+The graphs for other shocks to the setup of IO matrix (\ref{fig:IO2x2_highopen}) were omitted since they would not have added much to this paper.
+This exception is that at the first stage, the two most upstream sectors do not have a significant difference in volatility despite 
+having a difference in upstreamness. However, as the shock propagates up the value chain, this is corrected to be consistent with the 
+expected pattern. Comparing the 2-Country, 2-Sector setup, and the 1-Country, 2-Sector setup, results on the impact from country-sector shocks to 
+final demand are highly similar. Even the introduction of correlated shocks at the country and sector level or with combined shock 
+origins (country and country-sector, sector and country-sector) do not bring significant changes in the simulated patterns. Most likely, 
+this is related to the generally weak impact of final demand shocks relative to the initial price change in this framework.
+
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{graphs/2x2_scenarioplot_i_demand_shocks_RS0.8_year1.png}
+    \caption{\label{fig:2x2demand_i_y1} Country-sector demand shock propagation}
+\end{figure}
+
+% Concrete discussion of mechanism is contrast to 2-sector example
+
+Overall, the patterns described for the simulations on the 2-Country, 2-Sector setup are still consistent with the stylized facts 
+found in the data. The introduction of correlated shocks at the country or sector level as stand-alone scenarios does not 
+cause a major break in the pattern. Correlated shocks at the country or sector level appear to drive a ``comovement'' of prices that 
+emerges over a decrease in the difference between country-sector volatilities for the muti-stage propagation plots. This is a sensible pattern since 
+shocks that affect a set of country-sectors equally should cause a convergence by themselves already. But moreover, this convergence should be 
+accelerated through the IO linkages between country-sector during propagation up or down the value chain. Furthermore, there is no significant difference 
+to observe in qualitative terms between the IO matrix setup for high and low openness. The continued stability of the pattern, as empirically observed 
+in the data, is a sign of strong internal consistency of 
+the model behind these patterns. The shares of final demand and primary input against total output appear to be the main drivers 
+since they determine the direct shock exposure and the total (indirect) exposure (upstreamness, downstreamness) through the 
+network as well. As such, the model equations (\ref{eq:propagation}) provide a formal framework of how shocks to final demand (primary input cost)
+affect country-sectors in a production system directly and indirectly through the network. This is visible already for the first-stage transmission 
+but becomes even more apparent as shocks are simulated to propagate up (down) the production chain over multiple stages. However, at this point, 
+the lack of an observable difference in results between the IO matrices with high and low ``openness''
+raises the question if this framework might be over relying on the mechanism around final demand shares and primary input shares. 
+This might be an interesting challenge for a future extension of the model, as discussed in section \ref{sec:limit}.
+
+%From the overall discussion of the results for the 2-Country, 2-Sector setup and the comparison to the 2-Sector setup, the patterns are 
+%remarkably consistent. This indicates that the model outlined in this paper has an internally consistent mechanism that is robust to 
+%changes in its inputs . 

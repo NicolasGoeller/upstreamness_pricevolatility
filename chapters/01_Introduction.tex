@@ -1,0 +1,58 @@
+\section{Introduction}\
+\label{sec:intro}
+
+% What is the motivation
+Within the last three years, the world economy has experienced its first episode of significant price fluctuations since the Global 
+Financial Crisis in 2008. These price dynamics were induced first by the Covid crisis and then by the energy spill-overs from the 
+Russia-Ukraine war. Research has shown that supply chain linkages have significantly impacted the increased volatility of prices. Evidence, 
+in particular, suggests that the impact of an economic crisis is channeled from a few strongly affected sectors into the broader economy
+through supply chain linkages. \textcite{labelle2022GlobalSupplyChain} document this for technology equipment and automobiles during 
+the Covid crisis and \textcite{minton2023DelayedInflationSupply} do so for Petroleum Refining in case of the Russia-Ukraine war. In a 
+third line of inquiry \textcite{amiti2021HighImportPrices} show that the prices of inputs imported to the US reacted strongly, in 
+particular for unfinished industrial inputs during the Covid crisis (see figure (\ref{fig:covid_imports})). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{graphs/amiti_intro_plot_prices.png}
+    \caption{\label{fig:covid_imports} Prices for Imported Goods in the US as taken from \textcite{amiti2021HighImportPrices}}
+\end{figure}
+
+Naturally, this event is unique in the size of its shocks and their global scale. With global supply chains spanning countries and 
+sectors, price dynamics could be specific to a country, a sector in several countries, or a particular country-sector combination. Anecdotally,
+however, for a coarse sectoral disaggregation, and for the US only, evidence as in figure (\ref{fig:covid_imports}) suggests
+that sectors conventionally considered more upstream in the value chain are more volatile in their prices than downstream ones, especially since 
+2021, but potentially even before. Such an observation appears to be in parallel to phenomena such as the ``Bullwhip effect'' commonly discussed in 
+management science \parencite{sterman1989ModelingManagerialBehavior}. Consequently, this combination of anecdotal evidence and thematic commonality 
+with a related discipline raises a general question about the relationship between the position of a country-sector in the 
+global supply network and the volatility of its prices: Does the position of a country-sector along the value chain matter for its price 
+volatility?
+
+% why is this important?
+The comovement and volatility of prices are covered by a significant body of literature that includes production systems with intermediate 
+inputs from theoretical and empirical perspectives. Consequently, this paper is a theoretical exploration, specifically about the implication 
+of a country-sector's position in the production chain toward price volatility. Within studies of Input-Output systems, such positions 
+include the country-sector's distance to final demand and local input supply, respectively, and the diversification among its buyers and 
+suppliers. My analysis's results should constitute a mapping from production chain position to price volatility and how various types of 
+shocks affect this relationship.
+
+In order to obtain a theoretically founded mapping of production chain positions to price volatility, I derive a model for N-sector cost 
+minimization with Input-Output structures. This model simulates price outcomes for the upstream propagation of final demand shocks   
+and the downstream propagation of primary input cost shocks. The proposed model and its numerically simulated results for both a 
+1-Country, 2-Sector setup, and a 2-Country, 2-Sector setup reproduce the descriptive evidence derived through linear regression analysis
+on empirical data for sectoral prices and IO linkages. The simulated model and empirical analysis show that as a country-sector's distance 
+to final demand (upstreamness) increases, so does its price volatility. Similarly, as a country-sector's distance to primary inputs 
+(downstreamness) increases, its price volatility should be observed to decrease. The first of these results is well in line with figure 
+(\ref{fig:covid_imports}), where industrial supply prices change much stronger than consumer goods prices. The second result is harder to 
+verify with this graph due to the difficulty in determining distances to primary inputs for the depicted sectors. In my model, both 
+these relations hold even as shock transmission is simulated over several stages up (for final demand shocks) or down (for primary 
+input cost shocks) the production chain. Further theoretical implications show that correlated shocks at the country or sector level 
+do not break this general pattern but induce sectoral comovement as they decrease the differences in volatility for a simulated 
+propagation of the shocks beyond a first-stage transmission.
+
+% what am I doing?
+The rest of the paper is structured as follows. Section \ref{sec:lit} provides an overview of the relevant literature, while section 
+\ref{sec:methods}, \ref{sec:datafacts}, and \ref{sec:model} will discuss the methods, the stylized facts and the model and simulation 
+framework for this paper, respectively. Section \ref{sec:simres} presents the results derived from the simulations under various 
+Input-Output structures and their implications. Finally, section \ref{sec:limit} discusses the limitations of the approach utilized in 
+this paper but also possible extensions for future research, and section \ref{sec:conc} concludes.
+

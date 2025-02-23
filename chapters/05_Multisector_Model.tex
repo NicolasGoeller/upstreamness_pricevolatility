@@ -1,0 +1,389 @@
+\section{Multisector Model with Intermediate Inputs}
+\label{sec:model}
+
+After the basic concepts for this paper have been defined in the previous sections, I will now outline a basic model framework of cost 
+minimization. I utilize this model, heavily inspired by \textcite{caliendo2015EstimatesTradeWelfare}, to provide an intuition to explain 
+the effect of shocks on final demand and cost of primary inputs under a partial equilibrium in the goods market. Simulations of upstream 
+and downstream propagation can be conducted with this framework for various Input-Output structures and shock scenarios. This should 
+generate an understanding of the relationship between the position of a sector in the value chain and its price volatility. The previous 
+explanation of upstreamness and downstreamness, this model outline, and the specification of toy Input-Output tables will all follow the 
+same notational conventions regarding intermediate inputs, input coefficients, total output, and final demand. 
+
+\subsection{Model Outline for Cost Minimization}
+
+With an N-sector economy, the corresponding optimization problem of a representative firm in industry $i$ contains $N+1$ factor inputs 
+(N intermediates $\{z_{ji}\}_{j=1}^N $, one local primary input $l_i$, e.g. labor, services) and their prices 
+$w, \hspace{3pt}\{p_{j}\}_{j=1}^N$. As such, this implies the existence of N+1 markets for factor inputs, all of which are assumed to 
+be perfectly competitive for this paper. For simplicity, a Cobb-Douglas production function is used. This functional form is a strong 
+assumption since it imposes constant shares for all factors of production, hence an exogenous production structure. However, it also 
+implies an elasticity of substitution between the production factors equal to one, which implies strong substitutability of inputs. 
+This is a significant deviation from the Leontief production functions, usually employed for Input-Output models. Hence, the model 
+constructed here might be expected to yield propagation results that are more conservative than a similar Leontief-type model.
+Finally, a Cobb-Douglas production also implies that optimal production will have to employ inputs at equal orders of magnitude for 
+all inputs with non-zero input shares. This assumption is increasingly unrealistic as the number of factors rises. I refer to the 
+factors shares for this production function as input shares for the primary $\alpha_{0i}$  and intermediate $\{\alpha_{ji}\}_{j=1}^N$ 
+inputs. The matrix $A$ of these intermediate input shares is equivalent to the matrix $A$ of input coefficients in section 
+\ref{sec:methods} and hence constitutes the Input-Output structure for this model. I also include a labor productivity variable 
+$\tau_i$ that applies to primary inputs. All variables are denoted with a singular sector index, e.g. $i$, but this can be 
+easily extended for country-sector indices. I write the corresponding minimization problem for cost $C_i$ as follows:
+
+\begin{equation} \label{eq:min_prob}
+\begin{split}
+    &\min_{\substack{l_i, \{m_{ji}\}_{j=1}^N}} \mspace{5mu} C_i = wl_i + \sum_{j=1}^N p_j z_{ji} \\
+   s.t. \mspace{10mu} &x_i = (\tau_i l_i)^{\alpha_{0i}} \prod_{j=1}^N z_{ji}^{\alpha_{ji}}
+\end{split}
+\end{equation}
+
+For notational simplicity, in the following I will abbreviate $Z_i = \prod_{j=1}^N z_{ji}^{\alpha_{ji}}$. Furthermore, it must be noted
+that in most of the literature, the sum of input shares $\sum_{j=0}^N \alpha_{ji} = \gamma_i$ is assumed to be equal to 1, implying 
+constant returns-to-scale. However, this project will explicitly not make this assumption due to the short-term interest of the 
+question asked and hence explore the impact of different returns-to-scale (as compared to classical IO models mentioned in section 
+\ref{sec:methods}). Consequently, one can write the N+1 FOCs of the above optimisation problem, where $\mu_i$ is the Lagrange multiplier:
+
+\begin{equation} \label{eq:FOC}
+\begin{split}
+    & w - \mu_i\alpha_{0i}\tau_i^{\alpha_{0i}}l_i^{\alpha_{0i} -1} Z_i =0\\
+    & p_j - \mu_i(\tau_i l_i)^{\alpha_{0i}} \alpha_{ji} z_{ji}^{-1} Z_i = 0 \hspace{10pt} \forall j
+\end{split}
+\end{equation}
+
+This, in turn, allows me to derive the MRTS of factor inputs and their conditional factor demands from substituting into the
+production function.
+
+\begin{equation} \label{eq:CFD}
+\begin{split}
+    & l_i =  x_i^{\frac{1}{\gamma_i}} \left(\frac{\alpha_{0i}}{w \tau_i} \right)^{\frac{\gamma_i -\alpha_{0i}}{\gamma_i}} \prod_{j=1}^N \left(\frac{p_j}{\alpha_{ji}}\right)^{\frac{\alpha_{ji}}{\gamma_i}} \\
+    & z_{ji} =  x_i^{\frac{1}{\gamma_i}} \left(\frac{w}{\alpha_{0i}\tau_i}\right)^{\frac{\alpha_{0i}}{\gamma_i}} \frac{\alpha_{ji}}{p_j} \prod_{k=1}^N \left( \frac{p_k}{\alpha_{ki}} \right)^{\frac{\alpha_{ki}}{\gamma_i}}
+\end{split}
+\end{equation}
+
+By inserting these factor demands into the cost function, I obtain its final formulation and can derive by output $x_i$ for the marginal
+cost function with marginal cost $mc_i$ on the LHS. This function is written with the variables demand $x_i$, primary input unit cost 
+$\frac{w}{\tau_i}$, intermediate input prices $\{p_j\}_{j=1}^N$, and has the input shares $\{\alpha_{ji}\}_{j=0}^N$ and returns-to-scale 
+indicator $\gamma_i$ as parameters. Going forward, I also denote the primary input unit cost as $\omega_i = \frac{w}{\tau_i}$.
+\footnote{
+The term $\Theta_i$ denotes a firm-specific (sector-specific since I assume representative firms) constant. Specifically, 
+$\Theta_i = \prod_{j=0}^N \left(\frac{1}{\alpha_{ji}}\right)^{\frac{\alpha_{ji}}{\gamma_i}}$ This notation can be found in a similar 
+manner with \textcite[footnote 19]{caliendo2015EstimatesTradeWelfare}.}
+
+\begin{equation} \label{eq:cost_func}
+\begin{split}
+    C_i &= w l_i + \sum_{j=1}^N p_j z_{ji} \\
+    C_i &= \gamma_i x_i^{\frac{1}{\gamma_i}} \left(\omega_i\right)^{\frac{\alpha_{0i}}{\gamma_i}} \prod_{j=1}^N p_j^{\frac{\alpha_{ji}}{\gamma_i}} \Theta_i\\
+    mc_i =\frac{\partial C_i}{\partial x_i} &= x_i^{\frac{1 - \gamma_i}{\gamma_i}} \left(\omega_i \right)^{\frac{\alpha_{0i}}{\gamma_i}} \prod_{j=1}^N p_j^{\frac{\alpha_{ji}}{\gamma_i}} \Theta_i
+\end{split}
+\end{equation}
+
+In order to observe variations in this price-setting mechanism, I introduce the potential for shocks to final demand and labor cost. 
+The demand shock requires output to be decomposed into a sum final demand and intermediates sales $x_i = \sum_{j=1}^N z_{ij} + f_i = S_i + f_i$. 
+This decomposition is a relevant feature of the model since the theoretical framework has a strong connection to the share of final demand 
+in total output $\lambda_i$ that should also be reflected in the model's structure. For simplicity, it is assumed that the shocks are drawn 
+with a mean zero from a normal distribution and apply to an exogenous constant, which is the final demand component and the effective wage 
+in this framework. Thus, this way of constructing shocks will produce random fluctuations of the shocked variable around its partial 
+equilibrium state. I will consider shocks to final demand and to the local primary input's unit cost. The shock to the primary input's 
+unit cost is defined in a log-normal manner for equation (\ref{eq:cost_shock}), as is standard in the literature. As for the shock to final
+demand, the additive decomposition of demand necessitates that I adopt a slightly different approach, seen in 
+equation (\ref{eq:demand_shock}), since I need to take the logs of this demand component at a later stage in equation 
+(\ref{eq:demand_change}).\footnote{Numerically, there is a difference between this way of writing the demand shock and doing so in the more 
+standard, log-normal fashion. However, the difference is quite small, and the analytical layout remains reasonably easy to interpret. Thus, 
+this approach was deemed acceptable, given the benefits for the model shock structure at later stages.} Technically, this demand shock could 
+make the final demand negative ($\eta_i < -1$), leading to theoretically implausible values. I exclude this possibility by setting a logical 
+condition of minimal shock values in my code. Hence, I write as follows:
+
+\begin{equation} \label{eq:demand_shock}
+    x_i = S_i + f_i (1+\eta_i),  \hspace{10pt} \eta_i \sim \mathcal{N}(0,\sigma_{\eta})
+    %x_i = S_i + f_i e^{\eta_i},  \hspace{10pt} \eta_i \sim \mathcal{N}(0,\sigma_{\eta})
+\end{equation}
+\begin{equation} \label{eq:cost_shock}
+    \omega_i =  \frac{w}{\tau_i} e^{\varepsilon_i}, \hspace{10pt} \varepsilon_i \sim \mathcal{N}(0,\sigma_{\varepsilon})
+\end{equation}
+
+With this, the final marginal cost function with shocks writes:
+\begin{equation}\label{eq:mc_cost}
+    p_i = mc_i = \left( S_i + f_i (1+\eta_i) \right)^{\frac{1- \gamma_i}{\gamma_i}} \left(\frac{w}{\tau_i} e^{\varepsilon_i} \right)^{\frac{\alpha_{0i}}{\gamma_i}} \prod_{j=1}^N p_j^{\frac{\alpha_{ji}}{\gamma_i}} \Theta_i
+    %mc_i = \left( f_i e^{\eta_i} + S_i \right)^{\frac{1- \gamma_i}{\gamma_i}} \left(\frac{w}{\tau_i} e^{\varepsilon_i} \right)^{\frac{\alpha_{0i}}{\gamma_i}} \prod_{j=1}^N p_j^{\frac{\alpha_{ji}}{\gamma_i}} \prod_{j=0}^N \left(\frac{1}{\alpha_{ji}}\right)^{\frac{\alpha_{ji}}{\gamma_i}}
+\end{equation}
+
+Under the assumptions that (1) price setting is simultaneous across sectors, (2) inputs are sourced and used at prices set in the 
+previous period, (3) the input-output structure is exogenous, (4) pass-through is complete (e.g. lack of price rigidities, etc.),  
+(5) competition is perfect, and (6) each sector consists of one representative firm, it is possible to derive simulated, sectoral price 
+series from equation (\ref{eq:mc_cost}). Among these assumptions, (1) is trivial since firms do not wait for other firms from other 
+sectors to set their price. Assumption (2) has to be understood in the context of the partial equilibrium model framework, where 
+deviations of sectoral prices can exist at different stages of the production chain. Finally, assumptions (3), (4), (5), and (6) are 
+acceptable at this point because they make working with this framework tractable without impeding the clarity of the mechanism to be 
+shown here. Especially, assumption (5) on perfect competition is to be seen critically here since I intentionally do not assume 
+constant Returns-To-Scale. However, under non-constant Returns-To-Scale, it is unlikely for competition to be strong enough to push 
+profits to zero and hence validate this assumption. Given that the non-shock terms of equation (\ref{eq:mc_cost}) are derived as a result
+of optimization under partial equilibrium, it may possible to see these shock responses as stochastic fluctuations around an optimal state that 
+balance out in the time series average. Nonetheless, this is clearly imperfect, ignoring the potential for profits and especially 
+profit-seeking firm behavior. I further discuss how one could relax this and the other assumptions in section \ref{sec:limit} and what 
+this might imply for the results. 
+
+
+In applying the equation (\ref{eq:mc_cost}) on itself, each vector of output prices is the vector of input prices in the next 
+iteration. However, this marginal cost equation is extremely sensitive to the magnitude of price levels, making the overall simulation 
+process very dependent on the ``equilibrium prices''. Such prices will be derived by any system of production linkages (and associated 
+primary input costs, demands, productivities, etc.) after several iterations without any exogenous shocks (draws of 
+$\eta_i, \varepsilon_i$) at reasonable accuracy. The sensitivity of price setting to the level of input prices reflects the well-known 
+empirical fact about differences between price distributions across different countries and sectors (primarily their first moment). 
+Since the distributions of price changes are much more comparable across countries and sectors, a model of the theoretical problem 
+above but written in price changes might be more appropriate to represent the intended phenomenon. Regarding the formulation of price 
+changes in equation (\ref{eq:deltap}), the first step towards this new model is to write the marginal cost in logs and with a time 
+subscript (while taking out the shock decomposition for notational simplicity).
+
+%Since volatility is defined as the variance of the relative price changes observed over a particular period, the model has to produce a 
+%simulated output in form of a time series prices to compute price changes. If I can make the assumption that price setting is 
+%simultaneous across sectors, but inputs are used at prices produced in the previous time period, then the input prices and the prices
+%implied by the marginal cost will potentially be different. Then it is possible, to obtain a time series of simulated prices, by 
+%iterating equation (\ref{eq:mc_cost}) multiple times, making each output of prices the input prices in the next iteration. If the structure
+%of the production network remains unchanged over the simulation (assumed exogenous), any differences in prices should be due to shocks
+%to the sector, its direct upstream suppliers and the higher-order upstream suppliers in the previous period(s).
+%It is important to note 
+%here that this equation is extremely sensitive to the magnitude of price level, making the overall simulation process very dependent on 
+%the ``equilibrium''. Any system of production linkages (and associated wages, demands, productivities, etc.) will yield a vector of 
+%``equilibrium'' that this function will mechanically arrive at after several iterations without any exogenous shocks ($\eta_i, 
+%\varepsilon_i$). This dependence of the level-based simulation process corresponds to the large differences between empirically observed price 
+%distributions across different countries and sectors (primarily their first moment). However, the distributions of price changes are 
+%much more comparable across countries and sectors. A model of the theoretical problem above but written in price changes might hence be 
+%more appropriate to represent the intended phenomenon. In reference to the formulation of price changes in (\ref{eq:deltap}), the first 
+%step towards this new model is to write the marginal cost in logs and with a time subscript (while taking out the shock decomposition 
+%for notational simplicity).
+
+%It is important to note here that this equation is extremely sensitive to the magnitude of price level, making the overall simulation 
+%process very dependent on the ``equilibrium''. Any system of production linkages (and associated wages, demands, productivities, etc.)
+%will yield a vector of ``equilibrium'' that this function will mechanically arrive at after several iterations without any 
+%exogenous shocks. If the starting price is sufficiently far away from equilibrium, the new price will be influenced moreso by the move 
+%towards ``equilibrium'' than the response to shocks. For this reason, I allow for several iterations of this cost function until all 
+%price changes of the iteration are below a ``convergence threshold''. Since I am  strictly interested in the accumulation/ dispersion of 
+%shocks through a system of production linkages, it is necessary to start introducing shocks with a vector of initial prices at or near 
+%this ``equilibrium''. 
+
+
+\begin{equation} \label{eq:log_mc}
+    ln(p_{i,t}) = ln(mc_{i,t}) = \frac{1-\gamma_i}{\gamma_i} ln(x_{i,t}) + \frac{\alpha_{0i}}{\gamma_i} ln(\omega_{i,t}) + \sum_{j=1}^N \frac{\alpha_{ji}}{\gamma_i} ln(p_{i,t-1}) + ln(\Theta_i)
+\end{equation}
+
+Recalling equation (\ref{eq:mc_cost}), I can write the relative price change $\Delta p_{i,t+1}$ with this log marginal cost:
+
+\begin{equation}
+    \begin{split}
+        \Delta p_{i,t+1} &= ln(p_{i,t+1}) - ln(p_{i,t}) \\
+        &= \frac{1-\gamma_i}{\gamma_i} [ln(x_{i,t+1}) - ln(x_{i,t})] + \frac{\alpha_{0i}}{\gamma_i} [ln(\omega_{i,t+1}) - ln(\omega_{i,t})] + \\ 
+        & \sum_{j=1}^N \frac{\alpha_{ji}}{\gamma_i} [ln(p_{i,t}) - ln(p_{i,t-1})] \\
+        &= \frac{1-\gamma_i}{\gamma_i} \Delta x_{i,t+1} + \frac{\alpha_{0i}}{\gamma_i} \Delta \omega_{i,t+1} + \sum_{j=1}^N \frac{\alpha_{ji}}{\gamma_i} \Delta p_{i,t} 
+    \end{split}
+\end{equation}
+
+In order to complete the reformulation as a price change equation, I now re-consider the shocks to demand (\ref{eq:demand_shock}) and 
+primary input cost (\ref{eq:cost_shock}), and rewrite them as relative changes. Since $\omega_i$ has a simple multiplicative structure, the 
+changes result trivially in the absolute change of the shock draws, denoted by $d \varepsilon_{i,t+1}$. However, in the case of reformulating 
+the demand shock, intermediate sales as a constant necessitate more extensive steps. After normalizing the demand on the sum of intermediate 
+sales and constant final demand, the remaining term of $ln(1+x)$ can be written as an infinite geometric sum through the Taylor expansion. 
+The last step holds as a first-order approximation of the actual value at the first order. Given that the shocks are drawn from the same stationary 
+distribution $\eta_i \sim \mathcal{N}(0,\sigma_{\eta})$ at relatively small variance values, the likelihood of cases to occur where this
+approximation fails grossly is considered small. Hence, it was deemed appropriate. For simplicity of notation, I write the share of final 
+demand in output as $\frac{f_i}{(S_i+f_i)} = \lambda_i$. The results can now be written as the product of final demand share and the absolute 
+change in final demand shock $\lambda_i d \eta_{i,t+1}$. This would not have been possible under a log-normal shock formulation, thus justifying 
+the deviation from the standard in the literature. 
+
+\begin{equation} \label{eq:cost_change}
+    \begin{split}
+        \Delta \omega_{i,t+1} &= ln(\omega_{i,t+1}) - ln(\omega_{i,t}) \\
+        &= ln(\frac{w}{\tau_i} e^{\varepsilon_{i,t+1}}) - ln(\frac{w}{\tau_i} e^{\varepsilon_{i,t}}) \\
+        &= ln(\frac{w}{\tau_i}) + ln(e^{\varepsilon_{i,t+1}}) - ln(\frac{w}{\tau_i}) - ln(e^{\varepsilon_{i,t}}) \\
+        &= \varepsilon_{i,t+1} - \varepsilon_{i,t} \\
+        &= d \varepsilon_{i,t+1}
+    \end{split}
+\end{equation}
+
+\begin{equation} \label{eq:demand_change}
+    \begin{split}
+        \Delta x_{i,t+1} &= ln(x_{i,t+1}) - ln(x_{i,t}) \\
+        &= ln(S_i + f_i(1+\eta_{i,t+1})) - ln(S_i + f_i(1+\eta_{i,t}))\\
+        &= ln\left((1 + \frac{f_i}{S_i + f_i}\eta_{i,t+1}) (S_i+f_i) \right) - ln\left((1 + \frac{f_i}{(S_i+f_i)} \eta_{i,t}) (S_i+f_i) \right) \\
+        &= ln(1 + \frac{f_i}{(S_i+f_i)} \eta_{i,t+1}) + ln((S_i+f_i)) - ln(1 + \frac{f_i}{(S_i+f_i)} \eta_{i,t}) - ln((S_i+f_i)) \\
+        &= ln(1 + \frac{f_i}{(S_i+f_i)} \eta_{i,t+1}) - ln(1 + \frac{f_i}{(S_i+f_i)} \eta_{i,t}) \\
+        &= \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \left(\frac{f_i}{(S_i+f_i)} \eta_{i,t+1}\right)^n - \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \left(\frac{f_i}{(S_i+f_i)} \eta_{i,t}\right)^n \\
+        &= \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \left(\frac{f_i}{(S_i+f_i)}\right)^n (\eta_{i,t+1}^n - \eta_{i,t}^n) \\
+        &= \frac{f_i}{(S_i+f_i)} d \eta_{i,t+1} \\
+        &= \lambda_i d \eta_{i,t+1}
+    \end{split}
+\end{equation}
+
+With the reformulation of these two shocks, I can now write the final version of the price changes model. Price changes in a period can 
+be attributed to either a change in intermediate input prices, a change in final demand, or a change in primary input cost. 
+Furthermore, this equation is now stationary and does not rely on the strict temporal dimension to implement a simulation model. 
+Hence, I write intermediate input price changes as supplier price changes $\Delta p_{i,s}$ and the output price changes as buyer price 
+changes $\Delta p_{i,b}$.
+\begin{equation} \label{eq:price_changes}
+    \Delta p_{i,b} = \frac{1-\gamma_i}{\gamma_i}  \lambda_i d \eta_{i} + \frac{\alpha_{0i}}{\gamma_i} d \varepsilon_{i} + \sum_{j=1}^N \frac{\alpha_{ji}}{\gamma_i} \Delta p_{i,s} \\
+\end{equation}
+
+\subsection{Simulation Procedure}
+
+From equation (\ref{eq:price_changes}), simultaneous draws of initial supplier price changes $\Delta P_s$, and the two exogenous shocks 
+(final demand and primary input cost) will yield hypothetical price changes, providing a stationary representation of PPI inflation. The 
+volatility of sectoral prices over this set of price changes is the first simulated outcome to consider. While equation 
+(\ref{eq:price_changes}) dictates the formal structure for this process, it is convenient to rewrite this equation in matrix form. For 
+this purpose, I denote the vectors of price changes for buyers and suppliers $\Delta P_{b}, \Delta P_{s}$, vectors of shocks to final 
+demand and input cost $d \mathbb{H}, d \mathbb{E}$, the matrix of technical coefficients $\mathbb{A}$ and the diagonal matrices of 
+primary input shares, final demand shares and return-to-scale indicators $\hat{\mathbb{A}}_0, \hat{\Lambda}, \hat{\Gamma}$. This 
+equation can be understood as the downstream transmission of shocks to final demand and primary input cost together with an initial 
+change of intermediate input prices. These shocks are moderated in their impact by their shares of primary input, final demand, and 
+intermediate inputs, as these shares represent exposure to shocks from the respective sources. The Returns-To-Scale indicator will, on 
+its own, either amplify (for DRS) or diminish (for IRS) the shock impacts. Such an understanding is consistent with the micro-founded 
+perspective of cost-minimizing firms that change their prices corresponding to changes in their marginal costs caused by changes to the 
+cost of primary and intermediate inputs and final demand.
+
+\begin{equation} \label{eq:downstream_changes}
+    \Delta P_{b} = (\hat{\Gamma}^{-1} - I) \hat{\Lambda} d \mathbb{H} + \hat{\Gamma}^{-1} \hat{\mathbb{A}}_0 d \mathbb{E} + \Delta P_{s} \mathbb{A} \hat{\Gamma}^{-1}
+\end{equation}
+
+In order to obtain an equation that describes the transmission of price changes and shocks in an upstream direction, similar as in equation 
+(\ref{eq:downstream_changes}) does for downstream transmission, one could simply invert the equation to isolate $\Delta P_s$. This 
+equation, however, contains the matrix $A^{-1}$, which does not have a sensible interpretation for input-output models, but it also tends 
+to hold values that lead to unrealistically large price responses on the given shock input. Hence, I decided against simply choosing 
+shock variance values that would return price changes of reasonable size and instead opted to impose an ad-hoc modification of the 
+equation, using the matrix of output coefficients $\mathbb{B}$, which is defined as $\mathbb{B} = \hat{X}^{-1} Z$ (in parallel to 
+$\mathbb{A}$ being defined as $\mathbb{A} = Z \hat{X}^{-1}$).  Although the equation is not micro-founded as a result of firm 
+cost minimization, it can be interpreted similarly to the equation for downstream transmission. The upstream pass-through of price 
+pressures can be understood in two steps, where first, the initial change of output prices is modified by the shocks to final demand or 
+primary input costs. Since pass-through must be complete in this equation, the remaining change of prices will be transmitted through 
+the matrix $\mathbb{B}$, which indicates how much an industry relies on each of its buyers in terms of sales. If all or a sales-weighted 
+majority of buyers report a net negative price change (after shocks to final demand and primary input cost), then the industry must 
+accommodate this price movement.
+
+\begin{equation} \label{eq:upstream_changes}
+    \Delta P_{s} = \hat{\Gamma}^{-1} \mathbb{B} [\Delta P_{b} - (\hat{\Gamma}^{-1} - I) \hat{\Lambda} d \mathbb{H} - \hat{\Gamma}^{-1} \hat{\mathbb{A}}_0 d \mathbb{E}]
+\end{equation}
+
+Both equations on the transmission of price changes presented just now describe this process for a singular stage of the production chain.
+However, since the model presented here has a round-about structure of intermediate input sourcing, it is possible to consider price 
+changes N stages down or up from an initial price draw by applying the function to itself N times over. In doing so, the simulation tries
+to disentangle the propagation of shocks along the time dimension, where exogenous shocks would change as the propagation occurs, from the
+propagation along the value chain dimension, where exogenous shocks are still present but the price of inputs or outputs has already been 
+affected. Consequently, shocks will accumulate as they are re-introduced with every new stage, making this kind of simulation only a 
+realistic scenario for a small number of stages since firms would otherwise try to adapt their input mix to balance out the price change. 
+Such a situation of restricted adaptation is exactly to consider under very rapid shock occurrence scenarios or with disrupted supply 
+chains (see the paper by \textcite{labelle2022GlobalSupplyChain}). Furthermore, with this explicit consideration of the transmission of 
+shocks over several stages of the production chains, it seems sensible to introduce the common assumptions that (1) cost shocks are 
+transmitted downstream, and (2) demand shocks are transmitted upstream.\footnote{These assumptions are supported by theoretical and 
+empirical findings from \textcite{acemoglu2016NetworksMacroeconomyEmpirical}} Such a restriction is sensible for the dimensionality of 
+the simulation parameters to consider. Furthermore, it is reasonable not to impose both shocks at all stages of propagation since each 
+stage represents an upstream or downstream movement on the production chain, implying a move away from the incidence of final demand 
+and primary input cost, respectively. The concrete equations to compute this propagated price changes over several downstream and 
+upstream stages are as follows:
+
+\begin{equation} \label{eq:propagation}
+\begin{split}
+    \Delta P_b^n &= \Delta P_s (\mathbb{A} \hat{\Gamma}^{-1})^n  + \sum_{k=0}^{n-1} (\mathbb{A} \hat{\Gamma}^{-1})^k \hat{\mathbb{A}}_0 d \mathbb{E} \\
+    \Delta P_s^n &= (\hat{\Gamma}^{-1} \mathbb{B})^n \Delta P_b - \sum_{k=0}^{n-1} (\hat{\Gamma}^{-1} \mathbb{B})^k (\hat{\Gamma}^{-1} - I) \hat{\Lambda} d \mathbb{H}
+\end{split}
+\end{equation}
+
+With the equations and intuition for the simulation outlined as such, I can distinguish the inputs required to conduct an investigation
+with them into structural ones (e.g. production structure, shares of final demand, and primary input) and variable ones (e.g. shock 
+variance, variance of initial price change, Returns-To-Scale). I will vary the latter systematically to explore the sensitivity of 
+results to these input choices, while I will choose the Input-Output structures deliberately to draw out certain behaviors through the 
+simulation.
+
+\subsection{1-Country, 2-Sector Setup}
+
+%Intent of simple model setup (or two)
+
+A  1-Country, 2-Sector economy has all the essential features to begin the exploration of the relationship between shock exposures 
+implied by upstreamness and downstreamness and how that drives differences in price volatility. Even this simplified production structure 
+can be used to model ``round-about'' Input-Output linkages while also showing differences in the shares of final demand and primary input 
+use relative to total output. Naturally, such a setup is unrealistic, but it is sufficient to draw out the implications of sectoral 
+interdependences and differences in shock exposure for price volatility. Any comparison of production chain position and price volatility
+will have to be ordinal in this context since, with such a simple framework, ratios of these measures hold little value for interpretation.
+With this in mind, I decided on two intentionally coarse IO matrices, where the first matrix (\ref{fig:IO1x2_lowopen}) has its values for 
+final demand shares and primary input shares ranked the same over sectors, while the second matrix (\ref{fig:IO1x2_highopen}) has ranked 
+them in an inverted way. For both matrices, the columns titled $X$ and $F$ represent total output and final demand, while the row with the
+title $VA$ holds values for value added, previously written as $\omega_i$. Finally, the matrix with row and column names (s1,s2) has the 
+values for purchases and sales of intermediate inputs, previously written as $Z$. Since I wanted to keep both sectors at the same size 
+of output, this setup of IO linkages has led to matrix (\ref{fig:IO1x2_lowopen}) having a dominant diagonal (for rows and columns), 
+while the off-diagonal is dominant for matrix (\ref{fig:IO1x2_highopen}) (for rows and columns). In terms of generalization for larger 
+IO matrices, this implies that producers in the system represented by matrix (\ref{fig:IO1x2_lowopen}) rely majorly on ``domestic'' 
+inputs, while producers in the system for matrix (\ref{fig:IO1x2_highopen}) do so with ``foreign'' inputs. I term these IO linkage 
+scenarios ``low openness'' and ``high openness'' respectively.
+
+\begin{figure}[H]
+    \makebox[\textwidth][c]{%
+    \subfloat[IO matrix for 1-Country, 2-Sector setup with low openness]{\scalebox{0.8}{\includegraphics{pictures/IO_table_1x2_lowopen.png}}
+    \label{fig:IO1x2_lowopen}}
+    \quad
+    \subfloat[IO matrix for  1-Country, 2-Sector setup with high openness]{
+        \scalebox{0.8}{\includegraphics{pictures/IO_table_1x2_highopen.png}}
+        \label{fig:IO1x2_highopen}}
+    }
+\end{figure}
+
+From the IO matrix (\ref{fig:IO1x2_lowopen}), it is apparent that sector $s1$ has a final demand share of 0.2 and a primary input share of 0.2.
+Conversely, sector $s2$ has a final demand share of 0.4 and a primary input share of 0.4. This IO structure results in upstreamness values of
+$s1: 4.286,\hspace{3mm} s2: 2.857$ and downstreamness values of $s1: 4.286,\hspace{3mm} s2: 2.857$. 
+Evidently, with the symmetric structure of this IO matrix, the upstreamness and downstreamness values here are the same. Further, this structure of 
+low openness (dominant matrix diagonal) has also created a positive ``correlation'', between upstreamness and downstreamness.
+From the IO matrix (\ref{fig:IO1x2_highopen}), it is apparent that sector $s1$ has a final demand share of 0.3 and a primary input share of 0.5.
+Conversely, sector $s2$ has a final demand share of 0.5 and a primary input share of 0.3. This IO structure results in upstreamness values of
+$s1: 3.478,\hspace{3mm} s2: 3.043$ and downstreamness values of $s1: 3.043,\hspace{3mm} s2: 3.478$.
+Evidently, with the symmetric structure of this IO matrix, the upstreamness and downstreamness values here are the same. Further, this structure of 
+high openness (dominant matrix diagonal) has also created a negative ``correlation'', between upstreamness and downstreamness.
+
+\subsection{2-Country, 2-Sector Setup}
+
+Given my theoretical framework, a 1-Country, 2-Sector economy already has all the essential features to explore the basic relationship 
+between production chain position and price volatility. Based on that, the 2-Country, 2-Sector setup presents a first step toward a more 
+complete representation of a globally integrated production system. This applies to several specific features, specifically increased 
+diversification of sourcing and sales across the various country-sectors, but also shocks to final demand and primary input cost that 
+are correlated by sector or country next to basic country-sector shocks (regimes of mixed origin shocks are also possible). Such an IO 
+matrix with two countries and two sectors each is not a realistic representation of a globally integrated production system, but it does 
+strike a reasonable balance between the tractability of a simple model and the dangers of building a ``black box'' model in trying to 
+gain external validity. This has been critiqued by \textcite{caliendo2015EstimatesTradeWelfare} about previous CGE-based approaches, 
+and a full extension of my framework to the full extent of available data would incur the same problem. Finally, the assembly of four 
+country-sectors with this setup will be instrumental in ensuring that any conclusions about rankings of volatility do not arrive because 
+the sector with lower price volatility has a certain position on the production chain coincidentally. With these things in mind, I construe
+two IO matrices where, again, for the first matrix (\ref{fig:IO2x2_lowopen}) the rankings of final demand share and value added share 
+align, and where for the second matrix (\ref{fig:IO2x2_highopen}) these rankings are inverted. Overall, I have decided to introduce 
+the shares for primary inputs and final demand so that the sector-wise comparison is clear, as is the country-wise comparison. 
+However, a general structure in each country remains, with one sector more dependent on final demand or primary inputs respectively.
+The notations of the matrices depicted 
+are the same as for the 1-Country, 2-Sector with output $X$, final demand $F$, value added $VA$ and intermediate inputs $Z$. The only 
+difference is that the country-sector denominations now include a country indexation (A\_s1,A\_s2,B\_s1,B\_s2). With all country-sectors 
+of the same size in terms of output, this creates scenarios with matrix in figure (\ref{fig:IO2x2_lowopen}) having a dominant block-diagonal,
+and the matrix in figure (\ref{fig:IO2x2_highopen}) having a dominant off-diagonal blockwise. Similarly to before, a dominant block-diagonal
+for rows and columns implies that country-sectors rely on input sourcing and output sales on domestic partners at a majority (weakly).
+
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width=7.5cm]{pictures/IO_table_2x2_lowopen.png}
+    \caption{\label{fig:IO2x2_lowopen} IO matrix for 2-Country, 2-Sector setup with low openness}
+    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    
+    \includegraphics[width=7.5cm]{pictures/IO_table_2x2_highopen.png}
+    \caption{\label{fig:IO2x2_highopen} IO matrix for 2-Country, 2-Sector setup with high openness}
+\end{figure}
+
+From the IO matrix (\ref{fig:IO2x2_lowopen}), it is apparent that sector $A\_s1$ has a final demand share of 0.4 and a primary input share of 0.4, and 
+sector $A\_s2$ has a final demand share of 0.6 and a primary input share of 0.6. Conversely, sector $B\_s1$ has a final demand share of 0.3 and a 
+primary input share of 0.3, and sector $B\_s2$ has a final demand share of 0.5 and a primary input share of 0.5. This IO structure results in 
+upstreamness values of
+$A\_s1: 2.402,\hspace{3mm} A\_s2: 1.924,\hspace{3mm} B\_s1: 2.616,\hspace{3mm} B\_s2: 2.2$ and downstreamness values of 
+$A\_s1: 2.357,\hspace{3mm} A\_s2: 1.921,\hspace{3mm} B\_s1: 2.636,\hspace{3mm} B\_s2: 2.228$. As for the 1-country, 2-sector setup, this structure of low openness (dominant matrix diagonal) has 
+created a positive ``correlation'', between upstreamness and downstreamness.
+From the IO matrix (\ref{fig:IO2x2_highopen}), it is apparent that sector $A\_s1$ has a final demand share of 0.4 and a primary input share of 0.4, and 
+sector $A\_s2$ has a final demand share of 0.6 and a primary input share of 0.6. Conversely, sector $B\_s1$ has a final demand share of 0.3 and a 
+primary input share of 0.3, and sector $B\_s2$ has a final demand share of 0.5 and a primary input share of 0.5. This IO structure results in 
+upstreamness values of 
+$A\_s1: 1.853,\hspace{3mm} A\_s2: 2.264,\hspace{3mm} B\_s1: 2.026,\hspace{3mm} B\_s2: 2.503$ and downstreamness values of 
+$A\_s1: 2.481,\hspace{3mm} A\_s2: 2.01,\hspace{3mm} B\_s1: 2.305,\hspace{3mm} B\_s2: 1.85$.  As for the 1-country, 2-sector setup, this structure of 
+high openness (dominant matrix diagonal) has created a negative ``correlation'', between upstreamness and downstreamness. based on the evidence provided by 
+\textcite{antras2018MeasurementUpstreamnessDownstreamness}, the correlation between upstreamness and downstreamness should increase as openness of the 
+international production system increases. Hence, it should be considered critical that these IO tables, set up for a multi-country simulation, do not show 
+this pattern. I will discuss the reasons for this pattern and how a future extension of this model might be able to resolve this inconsistency.
+
+

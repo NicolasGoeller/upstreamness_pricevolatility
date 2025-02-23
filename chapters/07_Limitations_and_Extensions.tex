@@ -1,0 +1,75 @@
+\section{Limitations and Extensions}
+\label{sec:limit}
+
+The results presented in the previous section show that under the presented settings, the model is able to reproduce both the 
+positive correlation between upstreamness and price volatility and the negative correlation between downstreamness and price volatility.
+This should be seen as a success of the model since the model-based reproduction of these stylized facts was the primary goal 
+of this paper. However, the model is still grossly oversimplified as a representation of a globally integrated production system and uses 
+very coarse restrictions on implicit and explicit parameters. This section will outline some of the shortcomings that are visible already 
+now, how the model might be modified to incorporate solutions to these shortcomings, and what the implications of such modifications would 
+be. 
+
+%% Oversight in setup change in openness implies wrong correlations between prod chain measures.
+First, in setting up the IO matrices used for the simulations, I intentionally made it so that one matrix would have a negative correlation 
+between upstreamness and downstreamness (or rather inverted rankings of these measures) and one would have a positive correlation between
+these variables (parallel ranking). I also wanted to keep (country-)sectors at equal output size for the whole table in order to 
+exclude the factor of size differences as a determinant of differences volatility and keep the range of parameters to explore at a 
+sensible size. The resulting IO matrices had the correlations as intended, but the one that showed a ``high openness'' has a negative 
+correlation between upstreamness and downstreamness, making this feature explicitly stand in contrast to the data. While this is 
+a problematic feature of the setup, I decided it was the preferable option compared to opening the project up to a discussion 
+about sector size since that would have extended into issues about granularity. Including the issue of granular sectoral economies would 
+have exceeded the scope of this thesis in terms of model formulation and the availability of disaggregated data. However, this is 
+certainly an extension to the project that is worthwhile to consider for the future.
+
+
+%% Issues with structural parameters
+Second, the model presented in section \ref{sec:model} has no inter-industry barriers or frictions. Most notably, 
+such elements include trade costs and pass-through. Regarding trade costs, such a modification would be easily achievable, e.g. in the 
+form of standard ``iceberg'' trade costs as a square matrix of constants with values larger or equal one to represent either the price increase 
+for any inter-industry purchase. This addition might be instrumental in making simulation scenarios with multiple countries more 
+realistic. The chosen values should be systematically varied to explore the sensitivity of results to different trade costs or 
+undergo empirical justification (for a large-scale quantitative model implementation). Regarding pass-through, there is a breadth of empirical 
+studies to show that pass-through is often imperfect but may also be heterogeneous across sectors (or firms) and dependent on the state of the 
+economy (e.g. inflation rate). A simple modification to incorporate pass-through as a vector of constants applied to the marginal cost 
+equation would not be sufficient since these constants would cancel each other out when reformulating the model into price changes.
+However, a more serious attempt at including heterogeneous pass-through would have to decide whether to include such a feature as 
+price rigidity or variable mark-ups and hence rely on models of price setting or imperfect competition to supplement the current framework.
+Such an extension would also make the treatment of non-constant Returns-To-Scale values, as discussed in section \ref{sec:model}, significantly
+more coherent. The inclusion of models of price setting into the model framework would have the additional advantage of modeling a realistic
+distribution of price changes, especially in terms of frequency e.g. via menu costs models. The current framework has no such inhibition,
+which should imply price changes that are too frequent and, hence, too high volatility. However, such a model would necessarily 
+have to include a dynamic version of the optimization problem since fixing prices over time requires such a choice to be dynamically optimal 
+(at least in expectation).
+
+Third, the model framework I use to generate my results relies on a strong assumption of its Input-Output structure being exogenous.
+However, firms may account for the expected price volatility of their supplier when making a sourcing decision.
+Such an endogeneity in the data-generating process behind my model framework would not make the observation of the effects of
+small, idiosyncratic shocks on price volatility infeasible in and of itself. However, it does introduce another potential explanation 
+for the observed relations between production chain position and price volatility. With the formation of IO links being endogenous on 
+the expected price volatility, it could be that sectors with naturally high price volatility are placed further upstream as a result 
+of this process.
+
+%% Issues with shock specification
+Fourth, it should be an aspect of some criticism that the simulations are based on relatively arbitrary shock distributions. The choice 
+of a normal distribution with mean zero for shocks to final demand, primary input cost, and initial price changes is not a problem as 
+such since it is a convenient and tractable way to introduce variation of stochastic components to the model. The first moment of the 
+empirically observed cross-sectional price change distribution is slightly larger than zero since inflation is the usual trend (rather 
+than deflation). Hence, while a first moment of zero is uncritical for the shock distributions, it evidently is inconsistent with 
+empirical facts on price change distributions. However, this paper aims to explain simple patterns observed in the data through a basic 
+model framework and not match volatilities quantitatively; such inconsistency is still acceptable. The justification for the variances 
+of these distributions is to be seen more critically since a key part of the simulation result is a visual judgment of the relative 
+importance of shocks and initial price changes. This limitation could be fixed somewhat through a more fine-grained exploration of 
+different variance values and trying to find the parameter combinations that correspond to decent fits with empirically observed price 
+volatilities. A more rigorous attempt would involve a full model calibration of the distribution parameters to match empirical stylized 
+facts, e.g. moments of the price change distributions.
+
+%% Issues with data and external validity
+%Fifth, lack of data on prices for service sectors restricts the analysis in this paper significantly. Obviously, this is a common 
+%problem for studies with sectoral disaggregation since data on sectors is much more difficult to survey and harmonise across countries. 
+%However, the exclusion of service sectors in the case of this model systematically increases the share of
+%Does not include data on services - pushes them into the value added component, which is a gross simplification since services
+%might still be traded, especially within a country
+
+
+
+

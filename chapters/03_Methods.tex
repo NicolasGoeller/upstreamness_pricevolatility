@@ -1,0 +1,94 @@
+\section{Methods} \label{sec:methods}
+
+In this section, I define the variables of price volatility, upstreamness, and downstreamness. Following 
+\textcite{boivin2009StickyPricesMonetary}, going forward, I define the sectoral volatility of prices $\varphi_i$ as the standard deviation 
+of relative price changes (difference of logs) for a sector over an observation period. Intuitively, I write price $p_{i,t}$ for sector $i$ 
+at time $t$ and the relative rate of price change as $\Delta p_{i,t}$.%Since these variables are aggregated along some dimension and cannot be attributed to a singular sector at a specific time, their definition and subsequent computation matter to the outcome investigated with them.
+
+\begin{equation}\label{eq:deltap}
+    \Delta p_{i,t+1} = ln(p_{i,t+1}) - ln(p_{i,t})
+\end{equation}
+\begin{equation}\label{eq:def_volat}
+    \varphi_i = \sqrt{\frac{1}{T} \sum_{t=1}^T \left( \Delta p_{i,t} - \frac{1}{T} \sum_{t=1}^T \Delta p_{i,t} \right)^2}
+\end{equation}
+
+The terms ``upstreamness'' and ``downstreamness'' were first introduced by \textcite{antras2012MeasuringUpstreamnessProduction} as a measure 
+to denote a sector's average distance (upstreamness) from final demand in a value chain (downstreamness being the inverse of said distance).
+However, \textcite{miller2017OutputUpstreamnessInput} introduce the distinction between output upstreamness (in the sense of 
+\textcite{antras2012MeasuringUpstreamnessProduction}) and input downstreamness.\footnote{\textcite{fally2012ProductionStagingMeasurement} 
+makes a similar distinction but with less explicit terms.} This refined terminology acknowledges that in a value chain, both the distance from
+final demand and the distance from primary inputs (e.g. labor, non-tradeables, services, etc.) matter. Both measures are defined as an 
+(infinite) sum over the production stages upstream/ downstream from a sector as written in equation (\ref{eq:updown_series}). In this way, 
+upstreamness $u_i$ and downstreamness $d_i$ are characterized by the sectoral output $x_i$, values for final demand $\{f_j\}_{j=1}^N$ and 
+primary inputs $\{v_j\}_{j=1}^N$ as well as the values from a matrix $Z$ with sales and purchases of intermediate inputs. Specifically, 
+a diagonal matrix with the vector of output values $\hat{X}$ and the matrix of intermediate inputs are combined to derive a matrix $A$ 
+with input coefficients $A = Z \hat{X}^{-1}$ ($a_{ij} = z_{ij}/x_j$) and a matrix $B$ with output coefficients 
+$B = \hat{X}^{-1} Z$ ($b_{ji} = z_{ji}/x_j$). Respectively, coefficients in $A$ and $B$ represent the share of inputs from sector $i$ 
+required for outputs from sector $j$, and the share of outputs from sector $j$ required as inputs by sector $i$. The resulting formulas 
+taken from \textcite{miller2017OutputUpstreamnessInput}:
+
+\begin{equation}
+    \label{eq:updown_series}
+    \begin{split}
+        u_i &= 1 \frac{f_i}{x_i} + 2 \frac{\sum_{j} a_{ij} f_j}{x_i} + 3 \frac{\sum_{j,k} a_{ik} a_{kj} f_j}{x_i} + 4 \frac{\sum_{j,k,l} a_{il} a_{lk} a_{kj} f_j}{x_i} + ...\\
+        d_i &= 1 \frac{v_i}{x_i} + 2 \frac{\sum_{j} v_j b_{ji}}{x_i} + 3 \frac{\sum_{j,k} v_j b_{jk} b_{ki}}{x_i} + 4 \frac{\sum_{j,k,l} v_j b_{jk} b_{kl} b_{li}}{x_i} + ...
+    \end{split}
+\end{equation}
+
+The above sector-wise definitions of the measures are equivalent to computationally simpler variants that relate them explicitly to 
+Input-Output models. Specifically, \textcite[451-453]{miller2017OutputUpstreamnessInput} show that the equations 
+(\ref{eq:updown_series}) can be rewritten in the form of the equations (\ref{eq:updown_linalg}).\footnote{Hence, these definitions of 
+upstreamness and downstreamness make these concepts mathematically equivalent to the definitions of total forward and backward linkages
+as discussed by \textcite[555-558]{miller2009InputoutputAnalysisFoundations}.} Consequently, upstreamness $U$ can be 
+derived as the row sums of the Ghosh Inverse $G$ and downstreamness $D$ as the column sums of the Leontief inverse $L$.
+\footnote{These inverses are derived as infinite sum over the power series of their respective coefficient matrices: \begin{itemize}
+    \item $L = (I - A)^{-1} = \sum_{n=0}^{\infty} A^n$
+    \item $G = (I - B)^{-1} = \sum_{n=0}^{\infty} B^n$
+\end{itemize}} Here $\iota$ is a vector of ones with appropriate length.
+
+\begin{equation}
+    \label{eq:updown_linalg}
+    \begin{split}
+        U &=  G \iota = (I - B)^{-1} \iota = (I - \hat{X}^{-1} Z)^{-1} \iota\\
+        D &= \iota'L = \iota' (I - A)^{-1} = \iota' (I - Z \hat{X}^{-1})^{-1}
+    \end{split}
+\end{equation}
+
+As discussed briefly in section \ref{sec:lit}, the literature on production chains in international trade often frames the concept of 
+upstreamness as a means to classify the specialization of countries in certain stages of the chain 
+\parencite{antras2012MeasuringUpstreamnessProduction}. However, for the interests of macroeconomics, the view proposed by 
+\textcite{miller2017OutputUpstreamnessInput} should be more appropriate, where upstreamness is understood as an indicator of the 
+ability of a sector to propagate a stimulus through the economy. Specifically, I propose to consider yet another conceptual shift. For 
+this paper, understanding upstreamness and downstreamness, respectively, as indicators for exposure to shocks at the end (final demand) 
+and start (primary inputs) of the value chain should be conducive. With the final demand share $\frac{f_i}{x_i}$ and the value added 
+share $\frac{v_i}{x_i}$ there is already a characterization of direct dependence on these factors. Hence, they express the exposure of 
+a sector to direct shocks to its final demand and primary input cost. Considering that the final demand share and value added share, 
+respectively, make up the first term of the equations for upstreamness and downstreamness, it is evident that these measures indicate 
+the total exposure to shocks propagated through the IO network. In this sense, it is reasonable that direct exposure and total exposure 
+are inversely related by design. \textcite{antras2018MeasurementUpstreamnessDownstreamness} confirm this theoretical intuition regarding 
+negative correlations between upstreamness and final demand shares, as well as between downstreamness and value added shares. They also 
+show that in both cases, from 1995 to 2011, the negative correlation gets weaker over time. While one would expect that sectors close to 
+final demand (low upstreamness) should be far away from primary inputs (high downstreamness), there is a positive correlation between the 
+two measures (and also between final demand share and value added share). Over the observed period (1995-2011), these correlations are 
+found to increase further, making it overall very likely that these observed facts are related to the increasing openness to international 
+trade and fragmentation of production. The explanation put forward by \textcite{antras2018MeasurementUpstreamnessDownstreamness} for the 
+increasingly positive correlation between upstreamness and downstreamness relates to the structural change towards service sectors 
+observed in many economies, since those sectors should have both a high use of primary inputs (e.g. labor), but also attract a large 
+share of final consumption. Another candidate explanation is the reduction of trade costs that occurred in this period.
+
+I have referenced Input-Output models multiple times throughout this and the previous section. This term is not simply used for models 
+with intermediate input structures but applies to a specific model type, thoroughly discussed by 
+\textcite{miller2009InputoutputAnalysisFoundations}. Specifically, the Leontief IO-model is used to evaluate the propagation of 
+exogenous changes in final demand, while the Ghosh model does the same for changes in primary inputs. Both models can be formulated in 
+terms of physical units or prices (quantity model, price model). By themselves, these models are not commonly used in economics 
+publications anymore, although they are a staple in research on regional science and as part of computable general equilibrium models 
+(CGEs) for policy evaluation. The basic Input-Output models usually rely on production functions with strict complementarity 
+(Leontief-type) and do not have an explicit firm perspective, hence insufficient micro-foundations. Moreover, the propagation in these 
+models is commonly interpreted as occurring with physical quantities or prices held constant. Finally, Constant Return-To-Scale as an 
+assumption is made for all of these models, implying that all factors of production are flexibly adjustable. This feature, 
+together with the derivation of the Leontief and Ghosh inverse $L$, $G$ as infinite sums over the input and output coefficient matrix, 
+$A$ and $B$, respectively, give these models a distinct focus on long-term effects, since the infinite iteration over production stages 
+and flexibility of production factors only holds for long time horizons. On the other hand, partial equilibrium models are more flexible 
+and can be used to explore deviations from several of these assumptions, making them suitable for applications that focus on short-term 
+fluctuations.
+
