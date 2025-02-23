@@ -7,9 +7,10 @@
 /tables
 /graphs
 
-# Ignore all pdf outputs
+# Ignore pdf outputs, zip files and bib files
 *.pdf
 *.zip
+*.bib
 
 # History files
 .Rhistory
